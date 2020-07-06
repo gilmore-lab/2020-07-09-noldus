@@ -1,0 +1,178 @@
+---
+title: "Databrary: Sharing video data and documentation"
+author: "Rick Gilmore"
+date: "`r Sys.time()`"
+css: css/ioslides.css
+output:
+  revealjs::revealjs_presentation:
+    css: css/styles.css
+    self_contained: false
+    lib_dir: libs
+    incremental: false
+    theme: simple
+    transition: none
+    reveal_plugins: ["notes", "zoom"]
+    reveal_options:
+      slideNumber: true
+      previewLinks: false
+      center: true
+      touch: true
+  ioslides_presentation:
+    self_contained: true
+    widescreen: true
+    incremental: false
+    transition: default
+params:
+  databrary_login: your_email@your_provider.com
+  rstudio_version: '1.3.959'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+source("R/write_video_clip_html.R")
+
+library("tidyverse") # For pipe operator
+```
+
+---
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/NSF_Logo.PNG" height=100px>
+<img src="https://res-3.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_120,w_120,f_auto,b_white,q_auto:eco/ex89p5pm1bvck2ow3vwd" height=100px>
+<img src="https://nationalpress.org/wp-content/uploads/2016/04/NIDA-logo-300x300.jpg" height=100px/>
+<img src="https://media-exp1.licdn.com/dms/image/C560BAQFSW34bYyTRNQ/company-logo_200_200/0?e=2159024400&v=beta&t=dihthYdgNEVbHT3KPzcn7cp_CCTmg42M5-qQ43jK_aE" height=100px/>
+<img src="https://pbs.twimg.com/profile_images/880782598418694144/YzIrCofm_400x400.jpg" height=100px/>
+</br>
+<img src="https://sloan.org/storage/app/media/Logos/Sloan-Logo-stacked-black-web.png" height=100px>
+<img src="http://newsroom.unl.edu/announce/files/file77330.jpg" height=100px/>
+<img src="https://www.unicef.org.hk/wp-content/uploads/2017/08/Logo-05_Lego-foundation_UNICEF_partnership.jpg" height=100px />
+<img src="https://nyu.databrary.org/web/images/grants/jsmf.png" height=100px/></br>
+<img src="https://nyu.databrary.org/web/images/grants/darpa.png" height=100px/>
+
+<!-- Funding sources with icons -->
+
+
+---
+
+## Agenda
+
+- What is Databrary?
+- What makes Databrary special?
+
+# What is Databrary?
+
+## A restricted access *data library*...
+
+## specialized for storing, streaming, and sharing 
+
+## video & audio recordings
+
+## collected as research data & documentation
+
+---
+
+<iframe src="https://databrary.org" height=600px width=1200px>
+</iframe>
+
+---
+
+- Hosted at New York University (NYU)
+- 575 Institutions; 1,600+ researchers; 55K+ hours of video + other data
+- Opened 2014
+- Supported by NSF, NIH, DARPA, & private foundations
+
+# What makes Databrary special?
+
+## Access restricted to researchers 
+
+## Researchers must be authorized by *institutions*
+
+## Authorization grants site-wide access
+
+## Sensitive & identifiable data shared only with participant permission
+
+---
+
+```{r results='asis'}
+write_video_clip_html("https://www.databrary.org/video/example-video-1.mp4", vid_w_pix = 640, vid_h_pix = 480)
+```
+
+## Consistent site-wide sharing release levels
+
+---
+
+<iframe src="https://www.databrary.org/resources/guide/investigators/release/release-levels.html" height=600px width=1200px>
+</iframe>
+
+## Video as data...
+
+---
+
+```{r results='asis'}
+write_video_clip_html("https://nyu.databrary.org/slot/9829/-/asset/9918/download?inline=true", vid_w_pix = 640, vid_h_pix = 480, show_link = FALSE)
+```
+
+<small>
+Messinger, D. (2014). Facial expressions in 6-month old infants and their parents in the still face paradigm and attachment at 15 months in the Strange Situation. Databrary. Retrieved July 6, 2020 from http://doi.org/10.17910/B7059D
+</small>
+
+---
+
+```{r results='asis'}
+write_video_clip_html("https://nyu.databrary.org/slot/11680/25500,50000/asset/41873/download?inline=true", vid_w_pix = 640, vid_h_pix = 480, show_link = FALSE)
+```
+
+<small>
+Jayaraman, S., Smith, L.B., Raudies, F. & Gilmore, R.O. (2014). Natural Scene Statistics of Visual Experience Across Development and Culture. Databrary. Retrieved July 6, 2020 from http://doi.org/10.17910/B7988V
+</small>
+
+## Video as documentation...
+
+---
+
+```{r results='asis'}
+write_video_clip_html("https://nyu.databrary.org/slot/16668/0,140984/asset/72645/download?inline=true", vid_w_pix = 640, vid_h_pix = 480, show_link = FALSE)
+```
+
+<small>
+Bahrick, L.E. (2017). Multisensory Attention Assessment Protocol (MAAP). Databrary. Retrieved July 6, 2020 from http://doi.org/10.17910/B7.326
+</small>
+
+---
+
+```{r results='asis'}
+write_video_clip_html("https://nyu.databrary.org/slot/35422/43512069,43648839/asset/193909/download?inline=true", vid_w_pix = 640, vid_h_pix = 480, show_link = FALSE)
+```
+
+<small>
+Adolph, K., Gilmore, R.O. & Soska, K. (2019). Play and Learning Across a Year (PLAY) Project. Databrary. Retrieved July 6, 2020 from http://doi.org/10.17910/b7.876
+</small>
+
+## Sort, filter, & search by participant characteristics
+
+---
+
+<iframe src="https://nyu.databrary.org/volume/8" height=600px width=1200px>
+</iframe>
+
+---
+
+<video width="800" loop data-autoplay>
+  <source src="https://github.com/gilmore-lab/DEVSEC-2018/blob/master/mov/databrary-splash.mp4?raw=true" type="video/mp4">
+  </video>
+rog1@psu.edu</br>
+<https://gilmore-lab.github.io/2020-07-09-noldus/>
+
+---
+
+## Stack
+
+<small>
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com)  `r params$rstudio_version` using R Markdown and the reveal.JS framework.
+The code and materials used to generate the slides may be found at <https://github.com/gilmore-lab/2019-07-09-noldus/>.
+Information about the R Session that produced the code is as follows:
+</small>
+
+```{r session-info}
+sessionInfo()
+```
