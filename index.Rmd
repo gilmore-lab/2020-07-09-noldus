@@ -181,11 +181,16 @@ if (databraryapi::login_db(params$databrary_login)) {
 ---
 
 ```{r plot-demo, echo=FALSE, out.height="500px", message=FALSE}
+# Extract core participant demographcs
 vol_8_meta <- vol_8_meta %>%
   dplyr::filter(participant.race != "",
                 participant.gender != "") %>%
   dplyr::mutate(gender = participant.gender)
+
+# Recode race
 vol_8_meta$race <- factor(vol_8_meta$participant.race, labels = c("Asn", "Blk", "Unk", "Wht"))
+
+# Create cross-tabulated table
 age_gender_table <- xtabs(formula = ~ race + gender, data = vol_8_meta)
 age_gender_table %>%
   vcd::mosaic(.)
