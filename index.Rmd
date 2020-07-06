@@ -1,5 +1,5 @@
 ---
-title: "Databrary: Sharing video data and documentation"
+title: "Databrary: Advancing discovery"
 author: "Rick Gilmore"
 date: "`r Sys.time()`"
 css: css/ioslides.css
@@ -61,7 +61,7 @@ library("tidyverse") # For pipe operator
 
 # What is Databrary?
 
-## A restricted access *data library*...
+## A restricted access data library
 
 ## specialized for storing, streaming, and sharing 
 
@@ -87,7 +87,7 @@ library("tidyverse") # For pipe operator
 
 ## Researchers must be authorized by *institutions*
 
-## Authorization grants site-wide access
+## Authorization grants site-wide, not just project-specific access
 
 ## Sensitive & identifiable data shared only with participant permission
 
@@ -155,6 +155,39 @@ Adolph, K., Gilmore, R.O. & Soska, K. (2019). Play and Learning Across a Year (P
 <iframe src="https://nyu.databrary.org/volume/8" height=600px width=1200px>
 </iframe>
 
+## Access all data via API
+
+---
+
+```{r databrary-demo, echo=TRUE}
+if (databraryapi::login_db(params$databrary_login)) {
+  vol_8_meta <- databraryapi::download_session_csv(vol_id = 8)
+} else {
+  message("Login to Databrary failed.")
+}
+```
+
+<https://github.com/PLAY-behaviorome/databraryapi>
+
+---
+
+```{r plot-demo, echo=FALSE, out.height="500px", message=FALSE}
+vol_8_meta <- vol_8_meta %>%
+  dplyr::filter(participant.race != "",
+                participant.gender != "") %>%
+  dplyr::mutate(gender = participant.gender)
+vol_8_meta$race <- factor(vol_8_meta$participant.race, labels = c("Asn", "Blk", "Unk", "Wht"))
+age_gender_table <- xtabs(formula = ~ race + gender, data = vol_8_meta)
+age_gender_table %>%
+  vcd::mosaic(.)
+```
+
+<small>
+Tamis-LeMonda, C. (2013). Language, cognitive, and socio-emotional skills from 9 months until their transition to first grade in U.S. children from African-American, Dominican, Mexican, and Chinese backgrounds. Databrary. Retrieved December 18, 2019 from http://doi.org/10.17910/B7CC74
+</small>
+
+## Reproducible workflows right from the start
+
 ---
 
 <video width="800" loop data-autoplay>
@@ -168,11 +201,12 @@ rog1@psu.edu</br>
 ## Stack
 
 <small>
-This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com)  `r params$rstudio_version` using R Markdown and the reveal.JS framework.
+This talk was produced on `r Sys.Date()` in [RStudio](http://rstudio.com) `r params$rstudio_version` using R Markdown and the reveal.JS framework.
 The code and materials used to generate the slides may be found at <https://github.com/gilmore-lab/2019-07-09-noldus/>.
 Information about the R Session that produced the code is as follows:
 </small>
 
 ```{r session-info}
 sessionInfo()
+databraryapi::logout_db()
 ```
