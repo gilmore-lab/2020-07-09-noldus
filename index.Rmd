@@ -51,7 +51,6 @@ library("tidyverse") # For pipe operator
 
 <!-- Funding sources with icons -->
 
-
 ---
 
 ## Agenda
@@ -85,7 +84,17 @@ library("tidyverse") # For pipe operator
 
 ## Access restricted to researchers 
 
-## Researchers must be authorized by *institutions*
+---
+
+<iframe src="https://nyu.databrary.org/search?offset=0&volume=false&f.party_authorization=4&f.party_is_institution=false" height=600px width=1400px>
+</iframe>
+
+## Researchers must be authorized by institutions
+
+---
+
+<iframe src="https://nyu.databrary.org/search?volume=false&f.party_authorization=5&f.party_is_institution=true" height=600px width=1400px>
+</iframe>
 
 ## Authorization grants site-wide, not just project-specific access
 
